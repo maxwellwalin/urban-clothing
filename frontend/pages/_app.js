@@ -2,6 +2,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import { ApolloProvider } from '@apollo/client';
+import withData from '../lib/withData';
 
 import 'nprogress/nprogress.css';
 import '../components/styles/nprogress.css';
@@ -74,3 +75,14 @@ export default function App({ Component, pageProps, apollo }) {
     </ApolloProvider>
   )
 }
+
+App.getInitialProps = async function ({ Component, ctx }) {
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  pageProps.query = ctx.query;
+  return { pageProps };
+};
+
+export default withData(App);

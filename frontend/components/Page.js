@@ -62,6 +62,10 @@ const GlobalStyles = createGlobalStyle`
   button {
     font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
+
+  button:hover {
+    cursor: pointer;
+  }
 `;
 
 const InnerStyles = styled.div`

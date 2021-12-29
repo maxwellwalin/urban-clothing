@@ -11,7 +11,7 @@ import { ProductImage } from './schemas/ProductImage';
 import { insertSeedData } from './seed-data';
 
 const databaseURL =
-  process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits';
+  process.env.DATABASE_URL || 'mongodb://localhost/keystone-urban-clothing';
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 30 * 360,

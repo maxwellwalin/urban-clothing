@@ -65,7 +65,7 @@ const theme = {
   },
 }
 
-export default function App({ Component, pageProps, apollo }) {
+function App({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
       <GlobalStyle />

@@ -6,10 +6,33 @@ import withData from '../lib/withData';
 
 import 'nprogress/nprogress.css';
 import '../components/styles/nprogress.css';
+import Page from '../components/Page';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
+
+function App({ Component, pageProps, apollo }) {
+  return (
+    <ApolloProvider client={apollo}>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
+      </ThemeProvider>
+    </ApolloProvider>
+  )
+}
+
+App.getInitialProps = async function ({ Component, ctx }) {
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  pageProps.query = ctx.query;
+  return { pageProps };
+};
 
 const GlobalStyle = createGlobalStyle`
   font-face {
@@ -64,25 +87,5 @@ const theme = {
     primary: '#ff0000',
   },
 }
-
-function App({ Component, pageProps, apollo }) {
-  return (
-    <ApolloProvider client={apollo}>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </ApolloProvider>
-  )
-}
-
-App.getInitialProps = async function ({ Component, ctx }) {
-  let pageProps = {};
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-  pageProps.query = ctx.query;
-  return { pageProps };
-};
 
 export default withData(App);

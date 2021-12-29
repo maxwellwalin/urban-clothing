@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import propTypes from 'prop-types';
 import Header from "./Header";
 
 const InnerStyles = styled.div`

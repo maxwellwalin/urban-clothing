@@ -74,5 +74,3 @@ export default function App({ Component, pageProps, apollo }) {
     </ApolloProvider>
   )
 }
-
-export default App;

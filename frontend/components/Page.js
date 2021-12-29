@@ -13,7 +13,7 @@ export default function Page({ children }) {
 }
 
 Page.propTypes = {
-  children: propTypes.arrayOf(propTypes.node),
+  children: propTypes.node,
 };
 
 const GlobalStyles = createGlobalStyle`

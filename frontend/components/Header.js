@@ -2,22 +2,6 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Nav from './Nav';
 
-export default function Header() {
-  return (
-    <HeaderStyles>
-      <div className="bar">
-        <Logo>
-          <Link href="/">Urban Clothing</Link>
-        </Logo>
-      <Nav />
-      </div>
-      <div className="sub-bar">
-        <p>Search</p>
-      </div>
-    </HeaderStyles>
-  );
-}
-
 const Logo = styled.h1`
   font-size: 4rem;
   margin-left: 2rem;
@@ -49,3 +33,19 @@ const HeaderStyles = styled.header`
     border-bottom: 1px solid var(--black, black);
   }
 `;
+
+export default function Header() {
+  return (
+    <HeaderStyles>
+      <div className="bar">
+        <Logo>
+          <Link href="/">Sick Fits</Link>
+        </Logo>
+      <Nav />
+      </div>
+      <div className="sub-bar">
+        <p>Search</p>
+      </div>
+    </HeaderStyles>
+  );
+}

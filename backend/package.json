@@ -1,9 +1,8 @@
 {
   "name": "urban-clothing-backend",
   "version": "1.0.0",
-  "private": true,
   "author": "Maxwell Walin",
-  "license": "MIT",
+  "license": "GNU GENERAL PUBLIC",
   "scripts": {
     "dev": "keystone-next",
     "seed-data": "keystone-next --seed-data"

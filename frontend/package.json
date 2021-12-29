@@ -1,7 +1,7 @@
 {
   "name": "urban-clothing-frontend",
   "version": "1.0.0",
-  "description": "Urban Clothing eCommerce store built using the MERN Stack with Apollo/GraphQL API, featuring Next.js, Keystone.js, styled-components, and Stripe.",
+  "description": "Clothing eCommerce app built with the MERN Stack feat. Next.js, Keystone.js, and styled-components.",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",

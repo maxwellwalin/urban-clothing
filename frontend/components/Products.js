@@ -1,23 +1,7 @@
 import { useQuery } from '@apollo/client';
-import gql from "graphql-tag";
 import styled from 'styled-components';
+import { ALL_PRODUCTS_QUERY } from '../lib/gql';
 import Product from './Product';
-
-export const ALL_PRODUCTS_QUERY = gql`
-query ALL_PRODUCTS_QUERY {
-  allProducts {
-    id
-    name
-    price
-    description
-    photo {
-      image {
-        id
-        publicUrlTransformed
-      }
-    }
-  }
-}`
 
 const ProductsListStyles = styled.div`
   display: grid;
@@ -34,7 +18,7 @@ export default function Products() {
   return (
     <div>
       <ProductsListStyles> 
-        {data.allProducts.map(product => <Product key={product.id} product={product} />)}
+        {data.allProducts.filter((product) => product.status != "Unavailable").map(product => <Product key={product.id} product={product} />)}
       </ProductsListStyles>
     </div>
   );

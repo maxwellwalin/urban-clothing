@@ -1,33 +1,10 @@
 import useForm from "../lib/useForm";
 import FormStyles from "../components/styles/Form";
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import DisplayError from '../components/ErrorMessage';
 import { ALL_PRODUCTS_QUERY } from "./Products";
 import Router from 'next/router';
-
-const CREATE_PRODUCT_MUTATION = gql`
-mutation CREATE_PRODUCT_MUTATION($name: String!, $description: String!, $price: Int!, $image: Upload) {
-  createProduct(
-      data: {
-        name: $name,
-        description: $description,
-        price: $price,
-        status: "AVAILABLE",
-        photo: {
-            create: {
-                image: $image,
-                altText: $name
-            }
-        }
-  }
-  ) {
-        id
-        name
-        price
-        description
-    }
-}`
+import { CREATE_PRODUCT_MUTATION } from "../lib/gql";
 
 export default function CreateProduct() {
     const { inputs, handleChange, resetForm, clearForm } = useForm({
@@ -37,7 +14,7 @@ export default function CreateProduct() {
         description: ''
     });
 
-    const [createProduct, { loading, data, error }] = useMutation(CREATE_PRODUCT_MUTATION, {
+    const [createProduct, { loading, error }] = useMutation(CREATE_PRODUCT_MUTATION, {
         variables: inputs,
         refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
     });

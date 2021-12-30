@@ -3,6 +3,7 @@ import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 import Link from 'next/link';
 import formatMoney from "../lib/formatMoney";
+import DeleteProduct, { ArchiveProduct } from "./DeleteProduct";
 
 export default function Product({ product }) {
     return (
@@ -17,11 +18,13 @@ export default function Product({ product }) {
             <p>{product.description}</p>
             <div className='buttonList'>
                 <Link href={{
-                    pathname: 'update',
+                    pathname: '/update',
                     query: {
                         id: product.id
                     }
                 }}>EDIT ✏ </Link>
+                <ArchiveProduct id={product.id}>Archive 📘 </ArchiveProduct>
+                <DeleteProduct id={product.id}>Delete ❌ </DeleteProduct>
             </div>
         </ItemStyles>
     )
